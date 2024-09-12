@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header button {
+            background-color: white;
+            border: 1px solid green;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header button:hover {
+            background-color: #f0f0f0;
+        }
+        .vendor-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .vendor-card {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 22%;
+            min-width: 200px;
+        }
+        .vendor-card button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .vendor-card button:hover {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <button onclick="goHome()">Home</button>
+        <h2>Vendor</h2>
+        <button onclick="logout()">Log Out</button>
+    </div>
+
+    <!-- Vendor Section -->
+    <div class="vendor-section">
+        <!-- Vendor 1 -->
+        <div class="vendor-card">
+            <h3>Vendor 1</h3>
+            <p>Contact Details</p>
+            <button onclick="shopItem('clothing')">Shop Item</button>
+        </div>
+        <!-- Vendor 2 -->
+        <div class="vendor-card">
+            <h3>Vendor 2</h3>
+            <p>Contact Details</p>
+            <button onclick="shopItem('furniture')">Shop Item</button>
+        </div>
+        <!-- Vendor 3 -->
+        <div class="vendor-card">
+            <h3>Vendor 3</h3>
+            <p>Contact Details</p>
+            <button onclick="shopItem('accessories')">Shop Item</button>
+        </div>
+        <!-- Vendor 4 -->
+        <div class="vendor-card">
+            <h3>Vendor 4</h3>
+            <p>Contact Details</p>
+            <button onclick="shopItem('home-appliances')">Shop Item</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goHome() {
+        alert('Navigating to Home!');
+        // Add logic to navigate to the home page
+    }
+
+    function logout() {
+        alert('Logging Out!');
+        // Add logic for logging out
+    }
+
+    function shopItem(category) {
+        let url;
+        switch(category) {
+            case 'clothing':
+                url = 'https://www.levi.com/US/en_US/';
+                break;
+            case 'furniture':
+                url = 'https://www.ikea.com/in/en/';
+                break;
+            case 'accessories':
+                url = 'https://www.nike.com/retail/directory/india';
+                break;
+            case 'home-appliances':
+                url = 'https://www.samsung.com/in/';
+                break;
+            default:
+                url = 'https://example.com';
+        }
+        window.location.href = url; // Redirect to the category URL
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #b0b0b0;
+            border-radius: 10px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 20px;
+        }
+        .header button {
+            padding: 10px 20px;
+            background-color: #306EFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header button:hover {
+            background-color: #205dce;
+        }
+        .update-box {
+            background-color: #306EFF;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .radio-group {
+            margin: 20px 0;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #f0f0f0;
+        }
+        .radio-group input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        .update-button {
+            background-color: #306EFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .update-button:hover {
+            background-color: #205dce;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header section with Home and LogOut buttons -->
+        <div class="header">
+            <button onclick="window.location.href='index.html';">Home</button>
+            <button onclick="window.location.href='logout.html';">LogOut</button>
+        </div>
+
+        <!-- Update section -->
+        <div class="update-box">
+            <h2>Update</h2>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="orderStatus" value="received"> Received
+                </label>
+                <label>
+                    <input type="radio" name="orderStatus" value="readyForShipping"> Ready for Shipping
+                </label>
+                <label>
+                    <input type="radio" name="orderStatus" value="outForDelivery"> Out for Delivery
+                </label>
+            </div>
+            <button class="update-button" onclick="updateStatus()">Update</button>
+        </div>
+    </div>
+
+    <script>
+        function updateStatus() {
+            const selectedStatus = document.querySelector('input[name="orderStatus"]:checked');
+            if (selectedStatus) {
+                alert('Order status updated to: ' + selectedStatus.value);
+            } else {
+                alert('Please select a status to update.');
+            }
+        }
+    </script>
+
+</body>
+</html>

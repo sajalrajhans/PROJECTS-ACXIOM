@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: right;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .container {
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .section {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="submit"], button {
+            padding: 10px;
+            margin: 5px;
+        }
+        input[type="submit"], button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button.update {
+            background-color: #ffc107;
+        }
+        button.logout {
+            background-color: #dc3545;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Logout -->
+    <header>
+        <a href="#" id="logoutBtn">Logout</a>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" id="homeBtn">Home</a>
+        <a href="#" id="membershipBtn">Membership</a>
+        <a href="#" id="userManagementBtn">User Management</a>
+        <a href="#" id="vendorManagementBtn">Vendor Management</a>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+
+        <!-- Home Section -->
+        <div id="homeSection" class="section visible">
+            <h1>Home</h1>
+            <p>Welcome to the Vendor Management System.</p>
+        </div>
+
+        <!-- Membership Section -->
+        <div id="membershipSection" class="section">
+            <h1>Membership</h1>
+            <p>Manage memberships here.</p>
+        </div>
+
+        <!-- User Management Section -->
+        <div id="userManagementSection" class="section">
+            <h1>User Management</h1>
+            <p>Manage users here.</p>
+        </div>
+
+        <!-- Vendor Management Section -->
+        <div id="vendorManagementSection" class="section">
+            <h1>Vendor Management</h1>
+            <form id="vendorForm">
+                <input type="text" id="vendorName" placeholder="Enter Vendor Name" required>
+                <input type="submit" value="Add Vendor">
+            </form>
+
+            <table id="vendorTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Vendor Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Vendor list will be dynamically added here -->
+                </tbody>
+            </table>
+
+            <!-- Update vendor section (hidden until an update action is triggered) -->
+            <div id="updateVendorSection" style="display:none;">
+                <h3>Update Vendor</h3>
+                <form id="updateVendorForm">
+                    <input type="text" id="updateVendorName" placeholder="Update Vendor Name" required>
+                    <button type="submit" class="update">Update Vendor</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Initializing the sections and buttons
+        const sections = {
+            home: document.getElementById('homeSection'),
+            membership: document.getElementById('membershipSection'),
+            userManagement: document.getElementById('userManagementSection'),
+            vendorManagement: document.getElementById('vendorManagementSection')
+        };
+
+        // Navigation buttons
+        document.getElementById('homeBtn').addEventListener('click', function() {
+            showSection('home');
+        });
+
+        document.getElementById('membershipBtn').addEventListener('click', function() {
+            showSection('membership');
+        });
+
+        document.getElementById('userManagementBtn').addEventListener('click', function() {
+            showSection('userManagement');
+        });
+
+        document.getElementById('vendorManagementBtn').addEventListener('click', function() {
+            showSection('vendorManagement');
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            alert('You have logged out.');
+            // Add logout functionality here
+        });
+
+        function showSection(sectionName) {
+            for (let key in sections) {
+                sections[key].classList.remove('visible');
+            }
+            sections[sectionName].classList.add('visible');
+        }
+
+        // Vendor Management Logic
+        let vendors = [];
+        let currentVendorIndex = -1;
+
+        const vendorForm = document.getElementById('vendorForm');
+        const vendorTable = document.getElementById('vendorTable').getElementsByTagName('tbody')[0];
+        const updateVendorSection = document.getElementById('updateVendorSection');
+        const updateVendorForm = document.getElementById('updateVendorForm');
+        const updateVendorName = document.getElementById('updateVendorName');
+
+        vendorForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const vendorName = document.getElementById('vendorName').value;
+
+            if (vendorName.trim() !== "") {
+                vendors.push(vendorName);
+                renderVendors();
+                document.getElementById('vendorName').value = ""; // Clear the input field
+            }
+        });
+
+        function renderVendors() {
+            vendorTable.innerHTML = ''; // Clear the table body
+            vendors.forEach((vendor, index) => {
+                const row = vendorTable.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                cell1.innerText = index + 1;
+                cell2.innerText = vendor;
+                cell3.innerHTML = `<button onclick="editVendor(${index})">Edit</button>`;
+            });
+        }
+
+        window.editVendor = function(index) {
+            currentVendorIndex = index;
+            updateVendorName.value = vendors[index];
+            updateVendorSection.style.display = 'block';
+        }
+
+        updateVendorForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (currentVendorIndex > -1) {
+                vendors[currentVendorIndex] = updateVendorName.value;
+                renderVendors();
+                updateVendorSection.style.display = 'none'; // Hide update section
+            }
+        });
+
+    </script>
+
+</body>
+</html>

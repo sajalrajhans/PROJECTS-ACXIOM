@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #4169e1;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar button {
+            background-color: white;
+            border: 2px solid green;
+            color: green;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .navbar button:hover {
+            background-color: green;
+            color: white;
+        }
+
+        .cart-section {
+            margin: 20px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 15px;
+            text-align: center;
+            background-color: #4169e1;
+            color: white;
+        }
+
+        .cart-table td img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .cart-table select {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .cart-table button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-table button:hover {
+            background-color: darkred;
+        }
+
+        .total-section {
+            text-align: right;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+
+        .checkout-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .checkout-button button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .checkout-button button:hover {
+            background-color: darkgreen;
+        }
+
+        .delete-all-button {
+            text-align: right;
+            margin-right: 20px;
+        }
+
+        .delete-all-button button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-all-button button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <button>Home</button>
+        <button>View Product</button>
+        <button>Request Item</button>
+        <button>Product Status</button>
+        <button>LogOut</button>
+    </div>
+
+    <!-- Cart Section -->
+    <div class="cart-section">
+        <h2>Shopping Cart</h2>
+
+        <!-- Cart Table -->
+        <table class="cart-table">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><img src="image-placeholder.png" alt="Product Image"></td>
+                <td>Product Name</td>
+                <td>100/-</td>
+                <td>
+                    <select onchange="updateTotal(this)">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </td>
+                <td id="total-price">100/-</td>
+                <td><button onclick="removeItem(this)">Remove</button></td>
+            </tr>
+        </table>
+
+        <!-- Grand Total Section -->
+        <div class="total-section">
+            Grand Total: <span id="grand-total">100/-</span>
+        </div>
+
+        <!-- Delete All Button -->
+        <div class="delete-all-button">
+            <button onclick="deleteAll()">Delete All</button>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="checkout-button">
+            <button>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // Update total price based on quantity selected
+        function updateTotal(selectElement) {
+            const pricePerItem = 100; // You can change this as needed
+            const quantity = selectElement.value;
+            const totalPriceCell = selectElement.parentElement.nextElementSibling;
+            const newTotalPrice = pricePerItem * quantity;
+            totalPriceCell.innerHTML = newTotalPrice + "/-";
+
+            // Update grand total
+            const grandTotalElement = document.getElementById("grand-total");
+            grandTotalElement.innerHTML = newTotalPrice + "/-"; // This is a simplified version; adjust for multiple products
+        }
+
+        // Remove an item from the cart
+        function removeItem(buttonElement) {
+            const row = buttonElement.parentElement.parentElement;
+            row.remove();
+            alert("Item removed from the cart!");
+        }
+
+        // Delete all items
+        function deleteAll() {
+            const table = document.querySelector(".cart-table");
+            table.innerHTML = `
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                </tr>`;
+            alert("All items removed!");
+            document.getElementById("grand-total").innerHTML = "0/-";
+        }
+    </script>
+
+</body>
+</html>

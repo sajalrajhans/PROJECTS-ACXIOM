@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dashboard {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-logout {
+            background-color: #dc3545;
+        }
+
+        .button-logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <h1>User Management</h1>
+        <div class="button-container">
+            <button class="button" onclick="navigateTo('home')">Home</button>
+            <button class="button" onclick="navigateTo('user-management')">User Management</button>
+            <button class="button" onclick="navigateTo('membership')">Membership</button>
+            <button class="button" onclick="navigateTo('add-user')">Add User</button>
+            <button class="button" onclick="navigateTo('update-user')">Update User</button>
+            <button class="button button-logout" onclick="navigateTo('logout')">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(page) {
+            // Example function to navigate to different pages
+            alert(`Navigating to ${page} page...`); // Replace with actual navigation logic
+        }
+    </script>
+</body>
+
+</html>

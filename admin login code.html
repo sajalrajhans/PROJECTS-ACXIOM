@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .login-container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #dcdcdc;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #000;
+            background-color: #a3c1e3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #c3dbf3;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .remember {
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"], input[type="button"] {
+            width: 45%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            margin: 10px 10px 0 0;
+        }
+
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #555;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Event Management System</h2>
+    <form action="admin-dashboard.html" method="post">
+        <label for="AdminId">Admin Id</label>
+        <input type="text" id="AdminId" name="AdminId" placeholder="Admin" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="password" required>
+
+        <!-- Remember Me Section -->
+        <div class="remember">
+            <input type="radio" id="remember" name="remember" value="yes">
+            <label for="remember">Remember Me</label>
+        </div>
+
+        <div class="buttons">
+            <input type="button" value="Cancel">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

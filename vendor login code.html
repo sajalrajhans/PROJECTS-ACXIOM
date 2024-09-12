@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Login - Event Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .login-container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #e6e6e6;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #999;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"], 
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .checkbox {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .checkbox input {
+            margin-right: 10px;
+        }
+        .checkbox label {
+            margin: 0;
+        }
+        .login-container .cancel {
+            background-color: #f44336;
+        }
+        .login-container .cancel:hover {
+            background-color: #e41f1f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Vendor Login</h2>
+    <form action="your_login_process_url" method="POST">
+        <label for="vendorid">Vendor ID</label>
+        <input type="text" id="vendorid" name="vendorid" placeholder="Enter Vendor ID" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+        <div class="checkbox">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <label for="rememberMe">Remember Me</label>
+        </div>
+
+        <button type="submit">Login</button>
+        <button type="button" class="cancel" onclick="window.location.href='your_cancel_url';">Cancel</button>
+    </form>
+</div>
+
+</body>
+</html>

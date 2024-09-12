@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            width: 150px;
+            margin: 10px auto;
+        }
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid black;
+            margin: 0 auto;
+        }
+        .line {
+            height: 20px;
+            border-left: 2px solid black;
+            margin: 0 auto;
+        }
+        .arrow-right {
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid black;
+            display: inline-block;
+        }
+        .line-horizontal {
+            width: 50px;
+            height: 0;
+            border-top: 2px solid black;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">START</div>
+    <div class="arrow-down"></div>
+    <div class="box">INDEX</div>
+    <div class="arrow-down"></div>
+    <div class="box">LOGIN</div>
+
+    <div class="container">
+        <!-- VENDOR Section -->
+        <div>
+            <div class="box">VENDOR</div>
+            <div class="arrow-down"></div>
+            <div class="box">Main Page</div>
+            <div class="container">
+                <div>
+                    <div class="box">Your Item</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">Insert</div>
+                    <div class="box">Delete</div>
+                </div>
+                <div>
+                    <div class="box">Add New Item</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">Product Status</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">Request Item</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">View Product</div>
+                </div>
+                <div>
+                    <div class="box">Transaction</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">User Request</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADMIN Section -->
+        <div>
+            <div class="box">ADMIN</div>
+            <div class="arrow-down"></div>
+            <div class="box">Maintenance Menu<br>(Admin access only)</div>
+            <div class="arrow-down"></div>
+            <div class="box">Add/Update Memberships</div>
+            <div class="box">Add/Update User, Vendor</div>
+            <div class="box">Users Management</div>
+            <div class="box">Vendor Management</div>
+            <div class="arrow-down"></div>
+            <div class="box">Add Membership for Vendor</div>
+            <div class="arrow-down"></div>
+            <div class="box">Update Membership for Vendor</div>
+        </div>
+
+        <!-- USER Section -->
+        <div>
+            <div class="box">USER</div>
+            <div class="container">
+                <div>
+                    <div class="box">Vendor</div>
+                </div>
+                <div>
+                    <div class="box">Cart</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">Payment</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">Total Amount</div>
+                    <div class="box">Cancel</div>
+                </div>
+                <div>
+                    <div class="box">Guest List</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">Update</div>
+                    <div class="box">Delete</div>
+                </div>
+                <div>
+                    <div class="box">Order Status</div>
+                    <div class="arrow-down"></div>
+                    <div class="box">Check Status</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

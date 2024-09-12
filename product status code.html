@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header, .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .header h2, .footer button {
+            margin: 0;
+        }
+        .header button, .footer button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header button:hover, .footer button:hover {
+            background-color: #003d80;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .action-buttons button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .action-buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <button onclick="goHome()">Home</button>
+        <h2>Product Status</h2>
+        <button onclick="logout()">Log Out</button>
+    </div>
+
+    <!-- Table for Product Status -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>E-Mail</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="productTable">
+            <!-- Example Row -->
+            <tr>
+                <td>Sajal Raj Hans </td>
+                <td>sajalswaroop8@gmail.com</td>
+                <td>Dehradun,dhoolkot uttrakhand</td>
+                <td>Pending</td>
+                <td class="action-buttons">
+                    <button onclick="updateStatus(this)">Update</button>
+                </td>
+                <td class="action-buttons">
+                    <button onclick="deleteRow(this)">Delete</button>
+                </td>
+            </tr>
+            <!-- More Rows can be dynamically added here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function goHome() {
+        alert('Going to Home Page!');
+        // Add logic to navigate to the home page
+    }
+
+    function logout() {
+        alert('Logging Out!');
+        // Add logic for logging out
+    }
+
+    function updateStatus(button) {
+        const row = button.parentElement.parentElement;
+        const statusCell = row.cells[3];
+        const newStatus = prompt('Enter new status:', statusCell.innerText);
+        if (newStatus) {
+            statusCell.innerText = newStatus;
+        }
+    }
+
+    function deleteRow(button) {
+        const row = button.parentElement.parentElement;
+        if (confirm('Are you sure you want to delete this entry?')) {
+            row.remove();
+        }
+    }
+</script>
+
+</body>
+</html>
